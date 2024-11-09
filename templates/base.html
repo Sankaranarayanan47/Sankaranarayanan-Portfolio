@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sankaranarayanan E - My Portfolio{% endblock %}</title>
+
+    <!-- Link to AOS Stylesheet for Animations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+    <!-- Link to Google Fonts (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Link to Custom CSS (Can be extended as needed) -->
+    
+    
+    <!-- Bootstrap CSS (Optional for additional styling) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">Sankaranarayanan E</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Page content will be inserted here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Connect with me:</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/sankaranarayanan47" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Sankaranarayanan47" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:sankaranarayanan0407@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 Sankaranarayanan E | All Rights Reserved</p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome for icons -->
+
+    <!-- Initialize AOS Animations -->
+    <script>
+        AOS.init({
+            duration: 1000, // Animation duration
+            easing: 'ease-in-out', // Easing type
+        });
+    </script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+
+{% block title %}Sankaranarayanan E - My Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- Stylesheet -->
+<style>
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Header Styles */
+.main-header {
+    background: linear-gradient(to right, #333, #555);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ffdd57;
+}
+
+/* Section Styling */
+section {
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#about, #skills {
+    background-color: #ffffff;
+}
+
+#projects {
+    background-color: #f8f9fa;
+}
+
+#contact {
+    background-color: #f1f3f5;
+}
+
+/* About Section */
+#about img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 2rem;
+    border: 5px solid #ffdd57;
+    transition: transform 0.3s ease;
+}
+
+#about img:hover {
+    transform: scale(1.1);
+}
+
+/* Project Cards */
+.project-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+}
+
+.project:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.project p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.project a:hover {
+    background-color: #ffdd57;
+}
+
+/* Contact Form */
+form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffdd57;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Footer */
+.main-footer {
+    background-color: #222;
+    color: #bbb;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.main-footer .social-links a {
+    color: #ffdd57;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.main-footer .social-links a:hover {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .project-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 90%;
+    }
+
+    #about img {
+        width: 150px;
+        height: 150px;
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Contact Information Styling */
+.contact-info {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 1rem auto;
+    text-align: left;
+    opacity: 0; /* For animation fade-in */
+    transform: translateY(30px); /* Initial position for animation */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation for Fade-in */
+.contact-info.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-info p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.contact-info a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #ffdd57;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .contact-info {
+        max-width: 90%;  /* Make the contact box smaller on mobile */
+        padding: 1rem;   /* Adjust padding for mobile */
+    }
+
+    .contact-info p {
+        font-size: 1rem; /* Slightly smaller text for mobile */
+    }
+}
+
+/* Media Query for Large Screen */
+@media (min-width: 1200px) {
+    .contact-info {
+        max-width: 800px; /* Larger width for bigger screens */
+    }
+}
+
+/* Adding Animation to Elements */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Trigger animation when the element comes into view */
+.contact-info.visible {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+
+
+</style>
+
+<!-- About Me Section -->
+<section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <img src="../static/img/myimage.jpg" alt="Sankaranarayanan E">
+    <p>I am a passionate and dedicated software engineer with a strong interest in full-stack development. I specialize in Python and related technologies and am eager to apply my skills in a professional environment.</p>
+</section>
+
+<!-- Objective Section -->
+<section id="objective" data-aos="fade-up">
+    <h2>Objective</h2>
+    <p>To secure a Software Engineer position where I can apply my full-stack development skills in Python and related technologies. I aim to tackle challenging projects that push my boundaries, enhance my technical knowledge, and contribute to the company's success.</p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    
+        {% for skill in skills %}
+           <li>{{ skill.name }}</li>
+        {% endfor %}
+    
+</section>
+
+<!-- Education Section -->
+<section id="education" data-aos="fade-up">
+    <h2>Education</h2>
+    
+        {% for ed in education %}
+            <li>
+                <strong>{{ ed.degree }}</strong> from {{ ed.institution }} ({{ ed.duration }})
+            </li>
+        {% endfor %}
+    
+</section>
+
+<!-- Projects Section -->
+<section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="project-list">
+        {% for project in projects %}
+            <div class="project" data-aos="zoom-in">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                <p><strong>Technologies:</strong> {{ project.tech_stack }}</p>
+                <a href="{{ project.link }}" target="_blank">View Project</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+<!-- Contact Section -->
+<section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    
+    <!-- Contact Information -->
+    <div class="contact-info">
+        <p><strong>Phone:</strong>  (+91) 8220594588</p>
+        <p><strong>Email:</strong>  <a href="https://sankaranarayanan0407@gmail.com" target="_blank">sankaranarayanan0407@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sankaranarayanan47" target="_blank">linkedin.com/in/sankaranarayanan47</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Sankaranarayanan47" target="_blank">github.com/Sankaranarayanan47</a></p>
+        <p><strong>Resume:</strong> <a href="../static/pdf/resume.pdf" target="_blank">Download Resume</a></p>
+    </div>
+    
+    <!-- Contact Form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const contactInfo = document.querySelector('.contact-info');
+        
+        // Detect when the element is in the viewport
+        function handleScroll() {
+            const rect = contactInfo.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                contactInfo.classList.add('visible');
+            }
+        }
+
+        // Run on initial load
+        handleScroll();
+
+        // Listen to scroll events
+        window.addEventListener('scroll', handleScroll);
+    });
+</script>
+
+{% endblock %}
+
+
